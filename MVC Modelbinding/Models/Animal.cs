@@ -17,7 +17,7 @@ public class Animal
     /// </summary>
     [Required(ErrorMessage = "You must provide the animal's common name")]
     [StringLength(128)]
-    [RegularExpression("^[A-Za-z\\s]+$", ErrorMessage = "Common name can only contain letters and spaceses (A-Z, a-z)")]
+    [RegularExpression("^[A-Za-z\\s]+$", ErrorMessage = "Common name can only contain letters and spaces (A–Z, a–z)")]
     public required string CommonName { get; set; } = string.Empty;
 
     /// <summary>
@@ -25,7 +25,7 @@ public class Animal
     /// </summary>
     [Required(ErrorMessage = "You must provide a class the animal belongs to")]
     [StringLength(128)]
-    [RegularExpression("^[A-Za-z\\s]+$", ErrorMessage = "Class can only contain letters and spaceses (A-Z, a-z)")]
+    [RegularExpression("^[A-Za-z\\s]+$", ErrorMessage = "Class can only contain letters and spaces (A–Z, a–z)")]
     public required string Class { get; set; } = string.Empty;
 
     /// <summary>
@@ -33,7 +33,7 @@ public class Animal
     /// </summary>
     [Required(ErrorMessage = "You must provide a family the animal belongs to")]
     [StringLength(128)]
-    [RegularExpression("^[A-Za-z\\s]+$", ErrorMessage = "Family can only contain letters and spaces (A-Z, a-z)")]
+    [RegularExpression("^[A-Za-z\\s]+$", ErrorMessage = "Family can only contain letters and spaces (A–Z, a–z)")]
     public required string Family { get; set; } = string.Empty;
 
     /// <summary>
@@ -41,7 +41,7 @@ public class Animal
     /// </summary>
     [Required(ErrorMessage = "You must provide a genus the animal belongs to")]
     [StringLength(128)]
-    [RegularExpression("^[A-Za-z\\s]+$", ErrorMessage = "Genus can only contain letters and spaces (A-Z, a-z)")]
+    [RegularExpression("^[A-Za-z\\s]+$", ErrorMessage = "Genus can only contain letters and spaces (A–Z, a–z)")]
     public required string Genus { get; set; } = string.Empty;
 
     /// <summary>
@@ -53,12 +53,6 @@ public class Animal
     /// <summary>
     /// Initializes a new instance of the <see cref="Animal"/> class.
     /// </summary>
-    /// <param name="id">The unique identifier of the animal.</param>
-    /// <param name="commonName">The common name of the animal.</param>
-    /// <param name="class">The biological class of the animal.</param>
-    /// <param name="family">The family of the animal.</param>
-    /// <param name="genus">The genus of the animal.</param>
-    /// <param name="lifeSpan">The lifespan range of the animal.</param>
     public Animal(int id, string commonName, string @class, string family, string genus, LifeSpan lifeSpan)
     {
         Id = id;
@@ -70,13 +64,16 @@ public class Animal
     }
 }
 
+/// <summary>
+/// Represents a lifespan range in years.
+/// </summary>
 public class LifeSpan
 {
     [Range(0, 1000)]
-    public UInt16 Min { get; set; }
+    public ushort Min { get; set; }
 
     [Range(0, 1000)]
-    public UInt16 Max { get; set; }
+    public ushort Max { get; set; }
 
     public override string ToString() => $"{Min} - {Max} years";
 }
